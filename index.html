@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Das oder Dass Quiz</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+  <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-xl">
+    <h1 class="text-2xl font-bold mb-6 text-center">Das oder Dass Quiz</h1>
+    
+    <form id="quizForm" class="space-y-4">
+      <!-- Aufgabe 1 -->
+      <div class="space-y-1">
+        <p>1. Ich weiß, ___ er heute kommt.</p>
+        <select class="border rounded p-1 w-full" name="q1">
+          <option value="">Wähle...</option>
+          <option value="dass">dass</option>
+          <option value="das">das</option>
+        </select>
+      </div>
+      
+      <!-- Aufgabe 2 -->
+      <div class="space-y-1">
+        <p>2. Ich habe ___ Buch gelesen.</p>
+        <select class="border rounded p-1 w-full" name="q2">
+          <option value="">Wähle...</option>
+          <option value="dass">dass</option>
+          <option value="das">das</option>
+        </select>
+      </div>
+
+      <!-- Aufgabe 3 -->
+      <div class="space-y-1">
+        <p>3. Es ist wichtig, ___ du pünktlich bist.</p>
+        <select class="border rounded p-1 w-full" name="q3">
+          <option value="">Wähle...</option>
+          <option value="dass">dass</option>
+          <option value="das">das</option>
+        </select>
+      </div>
+
+      <!-- Aufgabe 4 -->
+      <div class="space-y-1">
+        <p>4. Ich sehe ___ Auto dort draußen steht.</p>
+        <select class="border rounded p-1 w-full" name="q4">
+          <option value="">Wähle...</option>
+          <option value="dass">dass</option>
+          <option value="das">das</option>
+        </select>
+      </div>
+
+      <!-- Aufgabe 5 -->
+      <div class="space-y-1">
+        <p>5. Er sagte, ___ er morgen Zeit hat.</p>
+        <select class="border rounded p-1 w-full" name="q5">
+          <option value="">Wähle...</option>
+          <option value="dass">dass</option>
+          <option value="das">das</option>
+        </select>
+      </div>
+
+      <button type="button" onclick="checkAnswers()" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 w-full hover:bg-blue-600">
+        Prüfen
+      </button>
+    </form>
+
+    <div id="result" class="mt-6 text-center font-semibold text-lg"></div>
+
+    <footer class="mt-6 text-center text-gray-500 text-sm">
+      &copy; 2025 Erik. Alle Rechte vorbehalten.
+    </footer>
+  </div>
+
+  <script>
+    const answers = {
+      q1: 'dass',
+      q2: 'das',
+      q3: 'dass',
+      q4: 'das',
+      q5: 'dass'
+    };
+
+    function checkAnswers() {
+      let score = 0;
+      const total = Object.keys(answers).length;
+
+      for (const [key, value] of Object.entries(answers)) {
+        const selected = document.querySelector(`select[name="${key}"]`).value;
+        if (selected === value) score++;
+      }
+
+      document.getElementById('result').textContent = `Du hast ${score} von ${total} richtig!`;
+    }
+  </script>
+</body>
+</html>
